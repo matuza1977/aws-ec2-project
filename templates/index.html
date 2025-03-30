@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard EC2</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dashboard EC2</h1>
+            <div class="header-controls">
+                <div class="time-range">
+                    <button onclick="updateTimeRange(1)" class="active">1h</button>
+                    <button onclick="updateTimeRange(6)">6h</button>
+                    <button onclick="updateTimeRange(12)">12h</button>
+                    <button onclick="updateTimeRange(24)">24h</button>
+                </div>
+                <button id="refresh-btn" onclick="updateMetrics()">
+                    <i class="fas fa-sync-alt"></i> Atualizar
+                </button>
+            </div>
+        </header>
+
+        <div id="error-container" class="error-container" style="display: none;"></div>
+
+        <div class="instance-info">
+            <h2>Informações da Instância</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>ID:</label>
+                    <span id="instance-id">-</span>
+                </div>
+                <div class="info-item">
+                    <label>Estado:</label>
+                    <span id="instance-state">-</span>
+                </div>
+                <div class="info-item">
+                    <label>Tipo:</label>
+                    <span id="instance-type">-</span>
+                </div>
+                <div class="info-item">
+                    <label>DNS Público:</label>
+                    <span id="instance-dns">-</span>
+                </div>
+                <div class="info-item">
+                    <label>IP Público:</label>
+                    <span id="instance-ip">-</span>
+                </div>
+            </div>
+            
+            <div class="ssh-section">
+                <h3>Comando SSH</h3>
+                <div class="ssh-command-container">
+                    <input type="text" id="ssh-command" readonly>
+                    <button id="copy-ssh" onclick="copySSHCommand()">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+            </div>
+
+            <div class="tags-section">
+                <h3>Tags</h3>
+                <div id="instance-tags" class="tags-container">
+                    <span class="tag">Carregando...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>CPU</h3>
+                <div class="metric-value">
+                    <span id="cpu-value">-</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="cpu-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Memória</h3>
+                <div class="metric-value">
+                    <span id="memory-value">-</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="memory-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Disco</h3>
+                <div class="metric-value">
+                    <span id="disk-value">-</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="disk-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Rede</h3>
+                <div class="metric-values">
+                    <div class="metric-value">
+                        <label>Entrada:</label>
+                        <span id="network-in-value">-</span>
+                    </div>
+                    <div class="metric-value">
+                        <label>Saída:</label>
+                        <span id="network-out-value">-</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="network-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html> 
