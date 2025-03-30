@@ -161,6 +161,15 @@ chmod 400 ~/MyInstance.pem
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
+   ![image](https://github.com/user-attachments/assets/7230b1a3-e4aa-4065-a5a5-478a3d84b115)
+
+   ![image](https://github.com/user-attachments/assets/94061cb5-0a37-47ea-818a-c87629d285c5)
+
+   ![image](https://github.com/user-attachments/assets/19210fc4-51fc-483a-aa39-ca305515a8de)
+
+
+
+
 ## Licença
 
 Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para detalhes. 
