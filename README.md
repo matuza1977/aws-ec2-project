@@ -161,7 +161,8 @@ chmod 400 ~/MyInstance.pem
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-   LINK:   http://56.125.31.181:5000/
+   LINK:    http://56.125.31.181:5000/
+            http://ec2-56-125-31-181.sa-east-1.compute.amazonaws.com:5000/
 
    ![image](https://github.com/user-attachments/assets/7230b1a3-e4aa-4065-a5a5-478a3d84b115)
 
